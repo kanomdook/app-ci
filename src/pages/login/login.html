@@ -14,9 +14,9 @@
 
 
 <ion-content padding>
-  <input md-input [(ngModel)]="username" class="username" name="username" type="text" placeholder="Username" required>
-  <input md-input [(ngModel)]="password" class="password" name="password" type="password" placeholder="Password" required>
-  <button color="primary" md-button class='btnLogin' [disabled]="!(username && password)">
+  <input md-input [(ngModel)]="data.username" class="username" name="username" type="text" placeholder="Username" required>
+  <input md-input [(ngModel)]="data.password" class="password" name="password" type="password" placeholder="Password" required>
+  <button color="primary" md-button class='btnLogin' [disabled]="!(data.username && data.password)">
     Login
   </button>
 </ion-content>

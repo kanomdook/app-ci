@@ -14,7 +14,7 @@ import { IonicPage, NavController } from 'ionic-angular';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-
+  public data: any = {};
   constructor(public navCtrl: NavController) {
   }
 
