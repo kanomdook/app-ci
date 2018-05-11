@@ -30,10 +30,9 @@ describe('Home Page', () => {
     comp = fixture.componentInstance;
   });
 
-  it('should create component', () => {
+  it('should create home component', () => {
 
     expect(comp instanceof HomePage).toBe(true);
-  
-  });
 
+  });
 });
