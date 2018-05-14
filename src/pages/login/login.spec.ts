@@ -8,10 +8,11 @@ import { By } from "@angular/platform-browser";
 describe('Login Page', () => {
 
     let de: DebugElement;
+    let instance: LoginPage;
     let comp: LoginPage;
     let fixture: ComponentFixture<LoginPage>;
-    let username: HTMLInputElement;
-    let password: HTMLInputElement;
+    // let username: HTMLInputElement;
+    // let password: HTMLInputElement;
     let btnLogin: HTMLInputElement;
 
 
@@ -32,9 +33,10 @@ describe('Login Page', () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(LoginPage);
+        instance = fixture.debugElement.componentInstance;
         comp = fixture.componentInstance;
-        username = fixture.debugElement.query(By.css('.username')).nativeElement;
-        password = fixture.debugElement.query(By.css('.password')).nativeElement;
+        // username = fixture.debugElement.query(By.css('.username')).nativeElement;
+        // password = fixture.debugElement.query(By.css('.password')).nativeElement;
         btnLogin = fixture.debugElement.query(By.css('.btnLogin')).nativeElement;
     });
 
@@ -43,13 +45,11 @@ describe('Login Page', () => {
     });
 
     it('should be init input username to empty', () => {
-        fixture.detectChanges();
-        expect(username.value).toBe('');
+        expect(instance.username).toBeUndefined();
     });
 
     it('should be init input password to empty', () => {
-        fixture.detectChanges();
-        expect(password.value).toBe('');
+        expect(instance.password).toBeUndefined();
     });
 
     it('should be init disable button login', () => {
@@ -60,9 +60,8 @@ describe('Login Page', () => {
     it('should be fill input username', () => {
         fixture.detectChanges();
         fixture.whenStable().then(() => {
-            username.value = 'user01';
-            username.dispatchEvent(new Event('change'));
-            expect(username.value).toBe('user01');
+            instance.username = 'user01';
+            expect(instance.username).toBe('user01');
             expect(btnLogin.disabled).toBe(true);
         });
     });
@@ -70,9 +69,8 @@ describe('Login Page', () => {
     it('should be fill input password', () => {
         fixture.detectChanges();
         fixture.whenStable().then(() => {
-            password.value = 'password1234';
-            password.dispatchEvent(new Event('change'));
-            expect(password.value).toBe('password1234');
+            instance.password = 'password1234';
+            expect(instance.password).toBe('password1234');
             expect(btnLogin.disabled).toBe(true);
         });
     });
@@ -80,13 +78,11 @@ describe('Login Page', () => {
     it('should be fill input username and password', () => {
         fixture.detectChanges();
         fixture.whenStable().then(() => {
-            username.value = 'user01';
-            username.dispatchEvent(new Event('input'));
-            password.value = 'password1234';
-            password.dispatchEvent(new Event('input'));
+            instance.username = 'user01';
+            instance.password = 'password1234';
             fixture.detectChanges();
-            expect(username.value).toBe('user01');
-            expect(password.value).toBe('password1234');
+            expect(instance.username).toBe('user01');
+            expect(instance.password).toBe('password1234');
             expect(btnLogin.disabled).toBe(false);
         });
     });
